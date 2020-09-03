@@ -1,5 +1,5 @@
 <?php
-  include("check.php");
+  include("store.php");
   include("fetch.php");
 ?>
 
