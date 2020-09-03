@@ -8,8 +8,7 @@
     //initialise array fields to empty
     $description = $time = $place = "";
 
-    if($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        header('Location:index.php');
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     //validation checks for description input
     if( !isset($_POST['description']) || (isset($_POST['description']) && empty($_POST['description'])) ) {
@@ -33,6 +32,6 @@
     }else{
         $time = $_POST['time'];
     }
-        
-?>
+}
 
+?>
