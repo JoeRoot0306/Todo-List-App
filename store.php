@@ -3,9 +3,6 @@
     //date function
     $date = date("Y-m-d");
 
-    //array for errors
-    $errors = array("description" => "", "place" => "", "time" =>"");
-
     //initialise array fields to empty
     $description = $time = $place = "";
 
@@ -36,5 +33,13 @@
         $time = $_POST['time'];
     }
 
-        
+    $errors = [];
+
+    if(count($errors)>0){
+    foreach($errors as $key => $value) {
+        echo "Error for $key : $value";
+    }}else{
+        header('Location:index.php');
+    }
+       
 ?>
