@@ -10,10 +10,7 @@
 
     if($_SERVER['REQUEST_METHOD'] !== 'POST') {
         header('Location:index.php');
-    }
     
-      
-
     //validation checks for description input
     if( !isset($_POST['description']) || (isset($_POST['description']) && empty($_POST['description'])) ) {
         $errors['description'] = "Description is required";
