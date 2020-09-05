@@ -21,14 +21,15 @@
         <th>Description</th>
         <th>Place</th>
         <th>Time</th>
-        <th>Info</th>
+        <th>Action</th>
       </tr>
       <?php foreach($data as $result){ ?>
       <tr>
         <td><?php echo $result['description'];?></td>
         <td><?php echo $result['place'];?></td>
         <td><?php echo $result['time'];?></td>
-        <td><a href=more-info.php>More info</a></td>
+        <td><a href ="">Update</a></td>
+        <td><a href="delete.php?delete=<?php echo $result['id']; ?>">Delete</a></td>
       </tr>
       <?php } ?>
     </table>

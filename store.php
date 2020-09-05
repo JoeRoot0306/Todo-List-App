@@ -4,7 +4,8 @@
     //date function
     $date = date("Y-m-d");
 
-    $description = $time = $place = "";
+    $id = $description = $time = $place = "";
+
 
     $errors = [];
 
@@ -37,9 +38,10 @@
 
     //array for data
     $data = [
-        "description" => $description,
-        "place" => $place,
-        "time" => $time
+        ":description" => $description,
+        ":place" => $place,
+        ":time" => $time,
+        
     ];
     
     //checks for errors than outputs them, if none will insert data into db
@@ -50,5 +52,6 @@
         $stmt = $conn->prepare($sql);
         $stmt->execute($data);
     }
+
 
 ?>
