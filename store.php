@@ -1,12 +1,14 @@
 <?php
     include("config/db_connect.php");
+    
     //date function
     $date = date("Y-m-d");
 
-    //initialise array fields to empty
     $description = $time = $place = "";
 
-    if($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    $errors = [];
+
+    if(($_SERVER['REQUEST_METHOD']) !== 'POST') {
         header('Location:index.php');
     }
     
@@ -33,13 +35,20 @@
         $time = $_POST['time'];
     }
 
-    $errors = [];
-
+    //array for data
+    $data = [
+        "description" => $description,
+        "place" => $place,
+        "time" => $time
+    ];
+    
+    //checks for errors than outputs them, if none will insert data into db
     if(count($errors)>0){
-    foreach($errors as $key => $value) {
-        echo "Error for $key : $value";
-    }}else{
-        header('Location:index.php');
+        var_dump($errors);
+    } else {
+        $sql = "INSERT INTO todo (description,place,time) VALUES (:description, :place, :time)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($data);
     }
-       
+
 ?>
