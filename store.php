@@ -41,16 +41,22 @@
         ":description" => $description,
         ":place" => $place,
         ":time" => $time,
-        
+        ":delete" => $id
     ];
     
     //checks for errors than outputs them, if none will insert data into db
     if(count($errors)>0){
         var_dump($errors);
-    } else {
-        $sql = "INSERT INTO todo (description,place,time) VALUES (:description, :place, :time)";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($data);
+        die();
+    }
+
+    $sql = "INSERT INTO todo (description,place,time) VALUES (:description, :place, :time)";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($data);
+
+    if(isset($_GET['delete'])){
+        $delete = $conn->prepare("DELETE FROM todo WHERE id=:delete");
+        $delete->execute();
     }
 
 

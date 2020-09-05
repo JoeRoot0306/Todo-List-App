@@ -29,7 +29,7 @@
         <td><?php echo $result['place'];?></td>
         <td><?php echo $result['time'];?></td>
         <td><a href ="">Update</a></td>
-        <td><a href="delete.php?delete=<?php echo $result['id']; ?>">Delete</a></td>
+        <td><a href="store.php?delete=<?php echo $result['id']; ?>">Delete</a></td>
       </tr>
       <?php } ?>
     </table>
